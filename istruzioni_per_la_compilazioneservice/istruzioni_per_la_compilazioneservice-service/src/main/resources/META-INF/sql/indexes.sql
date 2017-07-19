@@ -1,1 +1,0 @@
-create index IX_2AEC0AFC on istruzioni_per_la_compilazione_child (Istruzioni_per_id);

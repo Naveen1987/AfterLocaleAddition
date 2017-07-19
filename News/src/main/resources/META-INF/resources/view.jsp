@@ -10,10 +10,10 @@
 <table  class="table table-striped">
 <thead>
     <tr class="bg-primary">
-      <th><b>Publish Date</b></th>
-      <th><b>Title</b></th>
-      <th><b>Body</b></th>
-      <th><b>Expliration Date</b></th>
+      <th><b><liferay-ui:message key="nePublishDate"/></b></th>
+      <th><b><liferay-ui:message key="neTitle"/></b></th>
+      <th><b><liferay-ui:message key="neBody"/></b></th>
+      <th><b><liferay-ui:message key="neExplirationDate"/></b></th>
     </tr>
   </thead>
 <tbody>

@@ -68,15 +68,18 @@ public boolean uploadInfo(ThemeDisplay themeDisplay, String folderId,String fold
 					Fields fields=new Fields();
 					if(val.length<typeName.length){
 						for(int i=0;i<val.length;i++){
-							if(i==1){continue;}
-							Field f=new Field(ddm.getStructureId(), typeName[i], val[i]);
-							fields.put(f);	
+							if(!typeName[i].equalsIgnoreCase("Titolo")){
+								Field f=new Field(ddm.getStructureId(), typeName[i], val[i]);
+								fields.put(f);	
+							}
 						}
 					}
 					else{
 						for(int i=0;i<typeName.length;i++){
-							Field f=new Field(ddm.getStructureId(), typeName[i], val[i]);
-							fields.put(f);	
+							if(!typeName[i].equalsIgnoreCase("Titolo")){
+								Field f=new Field(ddm.getStructureId(), typeName[i], val[i]);
+								fields.put(f);	
+							}	
 						}
 					}
 					if(typeName.length>val.length){
@@ -118,7 +121,7 @@ public boolean uploadInfo(ThemeDisplay themeDisplay, String folderId,String fold
 							logger.error("No Document Type {"+ddm.getName()+"} validation failed. Please Recreate your Document type");
 							return false;
 						}
-
+						
 						InputStream is =fileItem.getInputStream();
 						System.out.println(is.available());
 						ServiceContext serviceContext = new ServiceContext();
@@ -127,19 +130,14 @@ public boolean uploadInfo(ThemeDisplay themeDisplay, String folderId,String fold
 						serviceContext.setScopeGroupId(themeDisplay.getScopeGroupId());
 						serviceContext.setUserId(themeDisplay.getDefaultUserId());
 						serviceContext.setAttribute("fileEntryTypeId", sp.getFileEntryTypeId());
-						//Uploading metaData of File
-//						for(Field f:fields){
-//							String fieldName=""+ddm.getStructureId()+f.getName();
-//							serviceContext.setAttribute(fieldName, f.getValue());
-//							Locale locale = new Locale("it","IT");
-//							logger.info("Value Mapped {"+f.getName()+"="+f.getValue(locale)+"}");
-//						}
-						Locale loc=new Locale("it", "IT");
-						serviceContext.setAttribute(ddm.getStructureId()+"COD", val[0]);
-						serviceContext.setAttribute(ddm.getStructureId()+"REV", val[2]);
-						serviceContext.setAttribute(ddm.getStructureId()+"Lingua", "-");
-					   
 						
+						//Uploading metaData of File
+						for(Field f:fields){
+							String fieldName=""+ddm.getStructureId()+f.getName();
+							serviceContext.setAttribute(fieldName, f.getValue());
+							logger.info("Value Mapped {"+f.getName()+"="+f.getValue()+"}");
+						}			
+						System.out.println(val[1]);
 						DLAppLocalServiceUtil.addFileEntry(themeDisplay.getUserId(),repositoryId, folder.getFolderId(), title, mimeType, 
 								val[1], description, changeLog, is, file.length(), serviceContext);
 					    logger.info("File is Successfully Uploaded-{"+title+"}");

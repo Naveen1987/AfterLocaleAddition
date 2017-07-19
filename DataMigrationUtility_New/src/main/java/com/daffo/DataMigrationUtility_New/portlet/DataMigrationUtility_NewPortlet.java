@@ -33,7 +33,7 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true,
 	property = {
-			"com.liferay.portlet.display-category=Naveen Apps",
+	    "com.liferay.portlet.display-category=Naveen Apps",
 		"com.liferay.portlet.instanceable=true",
 		"javax.portlet.display-name=DataMigrationUtility_New Portlet",
 		"javax.portlet.init-param.template-path=/",

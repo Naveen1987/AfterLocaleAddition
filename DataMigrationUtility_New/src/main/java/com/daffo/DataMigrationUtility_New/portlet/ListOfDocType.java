@@ -97,15 +97,11 @@ public ListOfDocType()
 	docType.put("Affari Generali e Legali", "COD,Titolo,Lingua");
 	docType.put("Comitato Scientifico", "COD,Titolo,Lingua");
 	
-//	docType.put("Procedurre-Doc Az", "COD,Titolo,REV,Lingua");
-//	docType.put("Documenti di dipartimento", "COD,Titolo,REV,Lingua,Dipartimento");
-//	docType.put("Sicurezza-Rischio", "COD,Titolo,REV,Lingua");
-//	docType.put("Note Informative", "COD,Titolo,REV,Lingua");
-	docType.put("Procedurre-Doc Az", "COD,REV,Lingua");
-	docType.put("Procedurre-Doc Az", "COD,REV,Lingua");
-	docType.put("Documenti di dipartimento", "COD,REV,Lingua,Dipartimento");
-	docType.put("Sicurezza-Rischio", "COD,REV,Lingua");
-	docType.put("Note Informative", "COD,REV,Lingua");
+	docType.put("Procedurre-Doc Az", "COD,Titolo,REV,Lingua");
+	docType.put("Documenti di dipartimento", "COD,Titolo,REV,Lingua,Dipartimento");
+	docType.put("Sicurezza-Rischio", "COD,Titolo,REV,Lingua");
+	docType.put("Note Informative", "COD,Titolo,REV,Lingua");
+	
 	
 	docType.put("Farmacia", "COD,Titolo,REV,Lingua");
 	

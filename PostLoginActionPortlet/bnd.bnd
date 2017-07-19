@@ -1,0 +1,3 @@
+Bundle-Name: PostLoginActionPortlet
+Bundle-SymbolicName: com.demo.postloginactionportlet
+Bundle-Version: 1.0.0

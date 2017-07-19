@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.daffo.prontuario_drugservice.model.prontuario_drug">
+		<field name="drug_id" type="long" />
+		<field name="Gruppo" type="String" />
+		<field name="SottoGruppo" type="String" />
+		<field name="Codice" type="String" />
+		<field name="Principio_Attivo" type="String" />
+		<field name="Nome_Commerciale" type="String" />
+	</model>
+</model-hints>

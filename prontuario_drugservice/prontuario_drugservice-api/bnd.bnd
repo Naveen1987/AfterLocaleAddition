@@ -1,0 +1,9 @@
+Bundle-Name: prontuario_drugservice-api
+Bundle-SymbolicName: com.daffo.prontuario_drugservice.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.daffo.prontuario_drugservice.exception,\
+	com.daffo.prontuario_drugservice.model,\
+	com.daffo.prontuario_drugservice.service,\
+	com.daffo.prontuario_drugservice.service.persistence
+-includeresource: META-INF/service.xml=../prontuario_drugservice-service/service.xml

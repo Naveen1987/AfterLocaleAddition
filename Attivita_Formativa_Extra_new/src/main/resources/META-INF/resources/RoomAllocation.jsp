@@ -235,7 +235,7 @@ $('#btn-booked').click(function(){
                     resizable: false,
                     cache: false,
                     modal: true,
-                    width: 500,
+                    width: 700,
                     height:300
                 }
             }).after('destroy', function(event) {

@@ -158,7 +158,7 @@ function equipDiv() {
 
 <div id="listbookedRoomDiv"   style="display: none;" class="row">
 <div class="form-group pull-right">
-   <input type="text" class="search form-control" placeholder="What you looking for?">
+   <input type="text" class="search form-control" placeholder="<liferay-ui:message key="walf"/>">
 </div>
 <span class="counter pull-right"></span>
 <table class="table table-hover table-bordered results">

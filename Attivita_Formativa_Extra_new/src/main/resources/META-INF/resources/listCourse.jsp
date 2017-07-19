@@ -115,7 +115,7 @@ break;
     <th><b><liferay-ui:message key="Application"/></b></th>
     </tr>
     <tr class="warning no-result">
-      <td colspan="10"><i class="fa fa-warning"></i> <liferay-ui:message key="no_result"/></td>
+      <td colspan="10"><i class="fa fa-warning"></i> <liferay-ui:message key="noresult"/></td>
     </tr>
    </thead>
     <tbody>

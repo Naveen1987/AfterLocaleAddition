@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
+
+<service-builder package-path="com.daffo.prontuario_drugservice">
+	<namespace>prontuario_drug</namespace>
+	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
+    <entity name="prontuario_drug" table="prontuario_drug" local-service="true" remote-service="false">
+        <column type="long" name="drug_id" primary="true"></column>
+        <column name="Gruppo" type="String"></column>
+        <column name="SottoGruppo" type="String"></column>
+        <column name="Codice" type="String"></column>
+        <column name="Principio_Attivo" type="String"></column>
+        <column name="Nome_Commerciale" type="String"></column>
+    </entity>
+</service-builder>

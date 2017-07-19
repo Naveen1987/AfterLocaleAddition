@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean class="com.daffo.suilupposervice.service.impl.suiluppo_applicationLocalServiceImpl" id="com.daffo.suilupposervice.service.suiluppo_applicationLocalService" />
+	<bean class="com.daffo.suilupposervice.service.persistence.impl.suiluppo_applicationPersistenceImpl" id="com.daffo.suilupposervice.service.persistence.suiluppo_applicationPersistence" parent="basePersistence" />
+	<bean class="com.daffo.suilupposervice.service.impl.suiluppo_courseLocalServiceImpl" id="com.daffo.suilupposervice.service.suiluppo_courseLocalService" />
+	<bean class="com.daffo.suilupposervice.service.persistence.impl.suiluppo_coursePersistenceImpl" id="com.daffo.suilupposervice.service.persistence.suiluppo_coursePersistence" parent="basePersistence" />
+	<bean class="com.daffo.suilupposervice.service.impl.suiluppo_equip_allocationLocalServiceImpl" id="com.daffo.suilupposervice.service.suiluppo_equip_allocationLocalService" />
+	<bean class="com.daffo.suilupposervice.service.persistence.impl.suiluppo_equip_allocationPersistenceImpl" id="com.daffo.suilupposervice.service.persistence.suiluppo_equip_allocationPersistence" parent="basePersistence" />
+	<bean class="com.daffo.suilupposervice.service.impl.suiluppo_equipmentLocalServiceImpl" id="com.daffo.suilupposervice.service.suiluppo_equipmentLocalService" />
+	<bean class="com.daffo.suilupposervice.service.persistence.impl.suiluppo_equipmentPersistenceImpl" id="com.daffo.suilupposervice.service.persistence.suiluppo_equipmentPersistence" parent="basePersistence" />
+	<bean class="com.daffo.suilupposervice.service.impl.suiluppo_roomLocalServiceImpl" id="com.daffo.suilupposervice.service.suiluppo_roomLocalService" />
+	<bean class="com.daffo.suilupposervice.service.persistence.impl.suiluppo_roomPersistenceImpl" id="com.daffo.suilupposervice.service.persistence.suiluppo_roomPersistence" parent="basePersistence" />
+	<bean class="com.daffo.suilupposervice.service.impl.suiluppo_room_allocationLocalServiceImpl" id="com.daffo.suilupposervice.service.suiluppo_room_allocationLocalService" />
+	<bean class="com.daffo.suilupposervice.service.persistence.impl.suiluppo_room_allocationPersistenceImpl" id="com.daffo.suilupposervice.service.persistence.suiluppo_room_allocationPersistence" parent="basePersistence" />
+	<bean class="com.daffo.suilupposervice.service.impl.suiluppo_room_allocation_archiveLocalServiceImpl" id="com.daffo.suilupposervice.service.suiluppo_room_allocation_archiveLocalService" />
+	<bean class="com.daffo.suilupposervice.service.persistence.impl.suiluppo_room_allocation_archivePersistenceImpl" id="com.daffo.suilupposervice.service.persistence.suiluppo_room_allocation_archivePersistence" parent="basePersistence" />
+</beans>

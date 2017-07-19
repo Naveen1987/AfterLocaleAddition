@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
+
+<service-builder package-path="com.roomservice">
+	<namespace>RoomService</namespace>
+	
+	<entity name="Equipment" local-service="true" remote-service="false" table="equipment" cache-enabled="false">
+		<column name="equip_id" type="long" primary="true"></column>
+		<column name="equipment_name" type="String"></column>
+		<column name="equip_quantity" type="int"></column>
+		<column name="equip_description" type="String"></column>
+		<column name="equip_status" type="boolean"></column>
+	</entity>
+
+<entity name="BookedEquipment" local-service="true" remote-service="false" table="bookedequipment" cache-enabled="false">
+		<column name="booked_equip_id" type="long" primary="true"></column>
+		<column name="equip_id" type="long"></column>
+		<column name="course_id" type="long"></column>
+		<column name="equip_quantity" type="int"></column>
+		<column name="booked_equip_status" type="boolean"></column>
+		<column name="booked_equip_date" type="String"></column>
+	</entity>
+</service-builder>

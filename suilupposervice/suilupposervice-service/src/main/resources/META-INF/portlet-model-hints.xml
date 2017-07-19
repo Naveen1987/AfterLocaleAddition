@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.daffo.suilupposervice.model.suiluppo_application">
+		<field name="applicat_id" type="long" />
+		<field name="applicat_name" type="String" />
+		<field name="applicat_email" type="String" />
+		<field name="applicat_phone" type="String" />
+		<field name="course_id" type="long" />
+		<field name="applicat_confirm" type="String" />
+	</model>
+	<model name="com.daffo.suilupposervice.model.suiluppo_course">
+		<field name="course_id" type="long" />
+		<field name="Docente" type="String" />
+		<field name="Evento_Progetto" type="String" />
+		<field name="Titolo" type="String" />
+		<field name="Descrizione" type="String" />
+		<field name="Figure_Professionali_Coinvolte" type="String" />
+		<field name="Data_Inizio" type="String" />
+		<field name="Data_Fine" type="String" />
+		<field name="Tot_Ore" type="String" />
+		<field name="Nr_Edizione" type="String" />
+		<field name="Sede" type="String" />
+		<field name="Abstract" type="String" />
+		<field name="Dispensa_corso" type="String" />
+		<field name="Ammessi_al_corso" type="long" />
+		<field name="Scadenza_Iscrizioni" type="String" />
+		<field name="Visibile" type="String" />
+		<field name="Bloccato" type="String" />
+	</model>
+	<model name="com.daffo.suilupposervice.model.suiluppo_equip_allocation">
+		<field name="equip_allocat_id" type="long" />
+		<field name="course_id" type="long" />
+		<field name="equip_id" type="long" />
+		<field name="equip_allocat_quantity" type="long" />
+	</model>
+	<model name="com.daffo.suilupposervice.model.suiluppo_equipment">
+		<field name="equip_id" type="long" />
+		<field name="equip_name" type="String" />
+		<field name="equip_quanity" type="long" />
+		<field name="equip_description" type="String" />
+	</model>
+	<model name="com.daffo.suilupposervice.model.suiluppo_room">
+		<field name="roomID" type="long" />
+		<field name="room_name" type="String" />
+		<field name="room_description" type="String" />
+	</model>
+	<model name="com.daffo.suilupposervice.model.suiluppo_room_allocation">
+		<field name="room_allocat_id" type="long" />
+		<field name="roomID" type="long" />
+		<field name="course_id" type="long" />
+		<field name="room_allocat_date" type="String" />
+		<field name="room_allocat_startTime" type="String" />
+		<field name="room_allocat_start" type="String" />
+		<field name="room_allocat_end" type="String" />
+		<field name="room_allocat_status" type="String" />
+		<field name="room_allocat_endTime" type="String" />
+	</model>
+	<model name="com.daffo.suilupposervice.model.suiluppo_room_allocation_archive">
+		<field name="room_allocat_archive_id" type="long" />
+		<field name="roomID" type="long" />
+		<field name="course_id" type="long" />
+		<field name="room_allocat_date" type="String" />
+		<field name="room_allocat_startTime" type="String" />
+		<field name="room_allocat_start" type="String" />
+		<field name="room_allocat_end" type="String" />
+		<field name="room_allocat_status" type="String" />
+		<field name="room_allocat_endTime" type="String" />
+		<field name="room_archive_date" type="String" />
+	</model>
+</model-hints>

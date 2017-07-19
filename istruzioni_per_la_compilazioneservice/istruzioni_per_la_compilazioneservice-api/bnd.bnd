@@ -1,0 +1,9 @@
+Bundle-Name: istruzioni_per_la_compilazioneservice-api
+Bundle-SymbolicName: istruzioni_per_la_compilazioneservice.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	istruzioni_per_la_compilazioneservice.exception,\
+	istruzioni_per_la_compilazioneservice.model,\
+	istruzioni_per_la_compilazioneservice.service,\
+	istruzioni_per_la_compilazioneservice.service.persistence
+-includeresource: META-INF/service.xml=../istruzioni_per_la_compilazioneservice-service/service.xml

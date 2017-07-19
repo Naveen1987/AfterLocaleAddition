@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false" default-lazy="false">
+	<import class="com.daffo.prontuario_drugservice.model.prontuario_drug" />
+	<class name="com.daffo.prontuario_drugservice.model.impl.prontuario_drugImpl" table="prontuario_drug">
+		<id name="drug_id" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="Gruppo" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="SottoGruppo" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Codice" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Principio_Attivo" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Nome_Commerciale" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+</hibernate-mapping>

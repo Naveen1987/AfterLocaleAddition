@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false" default-lazy="false">
+	<import class="com.daffo.suilupposervice.model.suiluppo_application" />
+	<import class="com.daffo.suilupposervice.model.suiluppo_course" />
+	<import class="com.daffo.suilupposervice.model.suiluppo_equip_allocation" />
+	<import class="com.daffo.suilupposervice.model.suiluppo_equipment" />
+	<import class="com.daffo.suilupposervice.model.suiluppo_room" />
+	<import class="com.daffo.suilupposervice.model.suiluppo_room_allocation" />
+	<import class="com.daffo.suilupposervice.model.suiluppo_room_allocation_archive" />
+	<class name="com.daffo.suilupposervice.model.impl.suiluppo_applicationImpl" table="suiluppo_application">
+		<id name="applicat_id" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="applicat_name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="applicat_email" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="applicat_phone" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="course_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="applicat_confirm" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.daffo.suilupposervice.model.impl.suiluppo_courseImpl" table="suiluppo_course">
+		<id name="course_id" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="Docente" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Evento_Progetto" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Titolo" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Descrizione" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Figure_Professionali_Coinvolte" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Data_Inizio" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Data_Fine" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Tot_Ore" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Nr_Edizione" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Sede" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Abstract" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Dispensa_corso" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Ammessi_al_corso" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="Scadenza_Iscrizioni" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Visibile" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Bloccato" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.daffo.suilupposervice.model.impl.suiluppo_equip_allocationImpl" table="suiluppo_equip_allocation">
+		<id name="equip_allocat_id" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="course_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="equip_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="equip_allocat_quantity" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="com.daffo.suilupposervice.model.impl.suiluppo_equipmentImpl" table="suiluppo_equipment">
+		<id name="equip_id" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="equip_name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="equip_quanity" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="equip_description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.daffo.suilupposervice.model.impl.suiluppo_roomImpl" table="suiluppo_room">
+		<id name="roomID" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="room_name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="room_description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.daffo.suilupposervice.model.impl.suiluppo_room_allocationImpl" table="suiluppo_room_allocation">
+		<id name="room_allocat_id" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="roomID" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="course_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="room_allocat_date" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="room_allocat_startTime" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="room_allocat_start" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="room_allocat_end" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="room_allocat_status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="room_allocat_endTime" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.daffo.suilupposervice.model.impl.suiluppo_room_allocation_archiveImpl" table="suiluppo_room_allocation_archive">
+		<id name="room_allocat_archive_id" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="roomID" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="course_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="room_allocat_date" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="room_allocat_startTime" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="room_allocat_start" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="room_allocat_end" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="room_allocat_status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="room_allocat_endTime" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="room_archive_date" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+</hibernate-mapping>

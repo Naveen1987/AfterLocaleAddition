@@ -1,0 +1,9 @@
+Bundle-Name: suilupposervice-api
+Bundle-SymbolicName: com.daffo.suilupposervice.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.daffo.suilupposervice.exception,\
+	com.daffo.suilupposervice.model,\
+	com.daffo.suilupposervice.service,\
+	com.daffo.suilupposervice.service.persistence
+-includeresource: META-INF/service.xml=../suilupposervice-service/service.xml

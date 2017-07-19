@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false" default-lazy="false">
+	<import class="istruzioni_per_la_compilazioneservice.model.istruzioni_per_la_compilazione" />
+	<import class="istruzioni_per_la_compilazioneservice.model.istruzioni_per_la_compilazione_child" />
+	<class name="istruzioni_per_la_compilazioneservice.model.impl.istruzioni_per_la_compilazioneImpl" table="istruzioni_per_la_compilazione">
+		<id name="Istruzioni_per_id" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="purpose" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="MainTitle" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Tilte" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="SubTitle" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="istruzioni_per_la_compilazioneservice.model.impl.istruzioni_per_la_compilazione_childImpl" table="istruzioni_per_la_compilazione_child">
+		<id name="Ins_id" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="Instruction" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="Istruzioni_per_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+</hibernate-mapping>

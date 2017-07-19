@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
+
+<service-builder package-path="istruzioni_per_la_compilazioneservice">
+	<namespace>istruzioni_per_la_compilazione</namespace>
+	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
+    <entity name="istruzioni_per_la_compilazione" local-service="true" remote-service="false" table="istruzioni_per_la_compilazione" cache-enabled="false">
+        <column name="Istruzioni_per_id" primary="true" type="long"></column>
+        <column name="purpose" type="String"></column>
+        <column name="MainTitle" type="String"></column>
+        <column name="Tilte" type="String"></column>
+        <column name="SubTitle" type="String"></column>
+    </entity>
+    <entity name="istruzioni_per_la_compilazione_child" local-service="true" remote-service="false" table="istruzioni_per_la_compilazione_child" cache-enabled="false">
+        <column name="Ins_id" type="long" primary="true"></column>
+        <column name="Instruction" type="String"></column>
+        <column name="Istruzioni_per_id" type="long"></column>
+        <finder name="Istruzioni_per_id" return-type="Collection">
+        <finder-column name="Istruzioni_per_id" />
+        </finder>
+    </entity>
+   
+</service-builder>

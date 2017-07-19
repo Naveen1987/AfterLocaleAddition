@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
+
+<service-builder package-path="com.daffo.suilupposervice">
+    <author>Naveen</author>
+	<namespace>suilupposervice</namespace>
+    <entity name="suiluppo_course" cache-enabled="false" table="suiluppo_course" local-service="true" remote-service="false">
+        <column name="course_id" primary="true" type="long"></column>
+        <column name="Docente" type="String"></column>
+        <column name="Evento_Progetto" type="String"></column>
+        <column name="Titolo" type="String"></column>
+        <column name="Descrizione" type="String"></column>
+        <column name="Figure_Professionali_Coinvolte" type="String"></column>
+        <column name="Data_Inizio" type="String"></column>
+        <column name="Data_Fine" type="String"></column>
+        <column name="Tot_Ore" type="String"></column>
+        <column name="Nr_Edizione" type="String"></column>
+        <column name="Sede" type="String"></column>
+        <column name="Abstract" type="String"></column>
+        <column name="Dispensa_corso" type="String"></column>
+        <column name="Ammessi_al_corso" type="long"></column>
+        <column name="Scadenza_Iscrizioni" type="String"></column>
+        <column name="Visibile" type="String"></column>
+        <column name="Bloccato" type="String"></column>
+    </entity>
+    <entity name="suiluppo_application" local-service="true" remote-service="false" table="suiluppo_application" cache-enabled="false">
+        <column name="applicat_id" type="long" primary="true"></column>
+        <column name="applicat_name" type="String"></column>
+        <column name="applicat_email" type="String"></column>
+        <column name="applicat_phone" type="String"></column>
+        <column name="course_id" type="long"></column>
+        <column name="applicat_confirm" type="String"></column>
+         <finder name="course_id" return-type="Collection">
+        <finder-column name="course_id" />
+        </finder>
+    </entity>
+    <entity name="suiluppo_equipment" table="suiluppo_equipment" local-service="true" remote-service="false" cache-enabled="false">
+        <column name="equip_id" primary="true" type="long"></column>
+        <column name="equip_name" type="String"></column>
+        <column name="equip_quanity" type="long"></column>
+        <column name="equip_description" type="String"></column>
+    </entity>
+    
+    <entity name="suiluppo_room" local-service="true" remote-service="false" table="suiluppo_room" cache-enabled="false">
+        <column name="roomID" type="long" primary="true"></column>
+        <column name="room_name" type="String"></column>
+        <column name="room_description" type="String"></column>
+    </entity>
+    
+    <entity name="suiluppo_equip_allocation" table="suiluppo_equip_allocation" local-service="true" remote-service="false" cache-enabled="false">
+        <column name="equip_allocat_id" type="long" primary="true"></column>
+        <column name="course_id" type="long"></column>
+        <column name="equip_id" type="long"></column>
+        <column name="equip_allocat_quantity" type="long"></column>
+        <finder name="course_id" return-type="Collection">
+        <finder-column name="course_id" />
+        </finder>
+        <finder name="equip_id" return-type="Collection">
+        <finder-column name="equip_id" />
+        </finder>
+    </entity>
+    
+    <entity name="suiluppo_room_allocation" local-service="true" remote-service="false" table="suiluppo_room_allocation" cache-enabled="false">
+        <column name="room_allocat_id" primary="true" type="long"></column>
+        <column name="roomID" type="long"></column>
+        <column name="course_id" type="long"></column>
+        <column name="room_allocat_date" type="String"></column>
+        <column name="room_allocat_startTime" type="String"></column>
+        <column name="room_allocat_start" type="String"></column>
+        <column name="room_allocat_end" type="String"></column>
+        <column name="room_allocat_status" type="String"></column>
+        <column name="room_allocat_endTime" type="String"></column>
+         <finder name="course_id" return-type="Collection">
+        <finder-column name="course_id" />
+        </finder>
+        <finder name="roomID" return-type="Collection">
+        <finder-column name="roomID" />
+        </finder>
+    </entity>
+    <entity name="suiluppo_room_allocation_archive" local-service="true" remote-service="false" table="suiluppo_room_allocation_archive" cache-enabled="false">
+        <column name="room_allocat_archive_id" primary="true" type="long"></column>
+        <column name="roomID" type="long"></column>
+        <column name="course_id" type="long"></column>
+        <column name="room_allocat_date" type="String"></column>
+        <column name="room_allocat_startTime" type="String"></column>
+        <column name="room_allocat_start" type="String"></column>
+        <column name="room_allocat_end" type="String"></column>
+        <column name="room_allocat_status" type="String"></column>
+        <column name="room_allocat_endTime" type="String"></column>
+        <column name="room_archive_date" type="String"></column>
+         
+    </entity>
+    
+    
+	
+</service-builder>

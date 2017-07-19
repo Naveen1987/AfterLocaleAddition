@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
+
+<service-builder package-path="com.daffo.form_di_segnalazione">
+	<namespace>form_di_segnalazione</namespace>
+	<entity name="form_di_segnalazione" local-service="true" table="form_di_segnalazione" remote-service="false">
+	<column name="Form_di_segnalazione_id" type="long"
+			primary="true">
+		</column>
+		<column name="CODICE" type="String"></column>
+		<column name="INIZIALI_1" type="String"></column>
+        <column name="INIZIALI_1_a" type="String"></column>
+        <column name="INIZIALI_1_b" type="String"></column>
+        <column name="INIZIALI_1_c" type="String"></column>
+        <column name="INIZIALI_1_d" type="String"></column>
+        <column name="INIZIALI_1_e" type="String"></column>
+        <column name="DATA_2" type="String"></column>
+        <column name="SESSO_3" type="String"></column>
+        <column name="DATA_4" type="String"></column>
+<column name="ORIGINE_5" type="String"></column>
+<column name="DESCRIZIONE_6" type="String"></column>
+<column name="INDICARE_7_1" type="String"></column>
+<column name="INDICARE_7_2" type="String"></column>
+<column name="INDICARE_7_3" type="String"></column>
+<column name="INDICARE_7_4" type="String"></column>
+<column name="INDICARE_7_5" type="String"></column>
+<column name="INDICARE_7_6" type="String"></column>
+<column name="INDICARE_7_7" type="String"></column>
+<column name="GRAVITA_8_1" type="String"></column>
+<column name="GRAVITA_8_2" type="String"></column>
+<column name="GRAVITA_8_3" type="String"></column>
+<column name="GRAVITA_8_4" type="String"></column>
+<column name="GRAVITA_8_5" type="String"></column>
+<column name="GRAVITA_8_6" type="String"></column>
+<column name="GRAVITA_8_7" type="String"></column>
+<column name="EVENTUALI_9" type="String"></column>
+<column name="ESITO_10" type="String"></column>
+<column name="ESITO_10_1" type="String"></column>
+<column name="ESITO_10_2" type="String"></column>
+<column name="ESITO_10_3" type="String"></column>
+<column name="ESITO_10_4" type="String"></column>
+<column name="ESITO_10_5" type="String"></column>
+<column name="ESITO_10_6" type="String"></column>
+<column name="ESITO_10_7" type="String"></column>
+<column name="ESITO_10_8" type="String"></column>
+<column name="ESITO_10_9" type="String"></column>
+<column name="ESITO_10_10" type="String"></column>
+<column name="AZIONI_11" type="String"></column>
+<column name="FARMACO_12_a" type="String"></column>
+<column name="FARMACO_12_a_13" type="String"></column>
+<column name="FARMACO_12_a_14" type="String"></column>
+<column name="FARMACO_12_a_15" type="String"></column>
+<column name="FARMACO_12_a_16_1" type="String"></column>
+<column name="FARMACO_12_a_16_2" type="String"></column>
+<column name="FARMACO_12_a_17" type="String"></column>
+<column name="FARMACO_12_a_18" type="String"></column>
+<column name="FARMACO_12_a_19" type="String"></column>
+<column name="FARMACO_12_a_20" type="String"></column>
+<column name="FARMACO_12_b" type="String"></column>
+<column name="FARMACO_12_b_13" type="String"></column>
+<column name="FARMACO_12_b_14" type="String"></column>
+<column name="FARMACO_12_b_15" type="String"></column>
+<column name="FARMACO_12_b_16_1" type="String"></column>
+<column name="FARMACO_12_b_16_2" type="String"></column>
+<column name="FARMACO_12_b_17" type="String"></column>
+<column name="FARMACO_12_b_18" type="String"></column>
+<column name="FARMACO_12_b_19" type="String"></column>
+<column name="FARMACO_12_b_20" type="String"></column>
+<column name="FARMACO_12_c" type="String"></column>
+<column name="FARMACO_12_c_13" type="String"></column>
+<column name="FARMACO_12_c_14" type="String"></column>
+<column name="FARMACO_12_c_15" type="String"></column>
+<column name="FARMACO_12_c_16_1" type="String"></column>
+<column name="FARMACO_12_c_16_2" type="String"></column>
+<column name="FARMACO_12_c_17" type="String"></column>
+<column name="FARMACO_12_c_18" type="String"></column>
+<column name="FARMACO_12_c_19" type="String"></column>
+<column name="FARMACO_12_c_20" type="String"></column>
+<column name="INDICAZIONI_21_a" type="String"></column>
+<column name="INDICAZIONI_21_b" type="String"></column>
+<column name="INDICAZIONI_21_c" type="String"></column>
+<column name="FARMACO_22_a" type="String"></column>
+<column name="FARMACO_22_a_23" type="String"></column>
+<column name="FARMACO_22_a_24" type="String"></column>
+<column name="FARMACO_22_a_25" type="String"></column>
+<column name="FARMACO_22_a_26_1" type="String"></column>
+<column name="FARMACO_22_a_26_2" type="String"></column>
+<column name="FARMACO_22_a_27" type="String"></column>
+<column name="FARMACO_22_a_28" type="String"></column>
+<column name="FARMACO_22_a_29" type="String"></column>
+<column name="FARMACO_22_a_30" type="String"></column>
+<column name="FARMACO_22_b" type="String"></column>
+<column name="FARMACO_22_b_23" type="String"></column>
+<column name="FARMACO_22_b_24" type="String"></column>
+<column name="FARMACO_22_b_25" type="String"></column>
+<column name="FARMACO_22_b_26_1" type="String"></column>
+<column name="FARMACO_22_b_26_2" type="String"></column>
+<column name="FARMACO_22_b_27" type="String"></column>
+<column name="FARMACO_22_b_28" type="String"></column>
+<column name="FARMACO_22_b_29" type="String"></column>
+<column name="FARMACO_22_b_30" type="String"></column>
+<column name="INDICAZIONI_31_a" type="String"></column>
+<column name="INDICAZIONI_31_b" type="String"></column>
+<column name="USO_32" type="String"></column>
+<column name="CONDIZIONI_33" type="String"></column>
+<column name="ALTRE_34" type="String"></column>
+<column name="INDICARE_35_1" type="String"></column>
+<column name="INDICARE_35_2" type="String"></column>
+<column name="INDICARE_35_3" type="String"></column>
+<column name="INDICARE_35_4" type="String"></column>
+<column name="INDICARE_35_5" type="String"></column>
+<column name="INDICARE_35_6" type="String"></column>
+<column name="QUALIFICA_36_1" type="String"></column>
+<column name="QUALIFICA_36_2" type="String"></column>
+<column name="QUALIFICA_36_3" type="String"></column>
+<column name="QUALIFICA_36_4" type="String"></column>
+<column name="QUALIFICA_36_5" type="String"></column>
+<column name="QUALIFICA_36_6" type="String"></column>
+<column name="QUALIFICA_36_7" type="String"></column>
+<column name="QUALIFICA_36_8" type="String"></column>
+<column name="QUALIFICA_36_9" type="String"></column>
+<column name="QUALIFICA_36_10" type="String"></column>
+<column name="DATI_37_1" type="String"></column>
+<column name="DATI_37_2" type="String"></column>
+<column name="DATI_37_3" type="String"></column>
+<column name="DATI_37_4" type="String"></column>
+<column name="ASL_38" type="String"></column>
+<column name="REGIONE_39" type="String"></column>
+<column name="DATA_40" type="String"></column>
+<column name="FIRMA_41" type="String"></column>
+	</entity>
+</service-builder>

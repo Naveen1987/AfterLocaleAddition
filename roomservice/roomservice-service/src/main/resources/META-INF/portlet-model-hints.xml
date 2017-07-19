@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.roomservice.model.BookedEquipment">
+		<field name="booked_equip_id" type="long" />
+		<field name="equip_id" type="long" />
+		<field name="course_id" type="long" />
+		<field name="equip_quantity" type="int" />
+		<field name="booked_equip_status" type="boolean" />
+		<field name="booked_equip_date" type="String" />
+	</model>
+	<model name="com.roomservice.model.Equipment">
+		<field name="equip_id" type="long" />
+		<field name="equipment_name" type="String" />
+		<field name="equip_quantity" type="int" />
+		<field name="equip_description" type="String" />
+		<field name="equip_status" type="boolean" />
+	</model>
+</model-hints>

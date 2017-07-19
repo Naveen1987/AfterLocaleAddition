@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="istruzioni_per_la_compilazioneservice.model.istruzioni_per_la_compilazione">
+		<field name="Istruzioni_per_id" type="long" />
+		<field name="purpose" type="String" />
+		<field name="MainTitle" type="String" />
+		<field name="Tilte" type="String" />
+		<field name="SubTitle" type="String" />
+	</model>
+	<model name="istruzioni_per_la_compilazioneservice.model.istruzioni_per_la_compilazione_child">
+		<field name="Ins_id" type="long" />
+		<field name="Instruction" type="String" />
+		<field name="Istruzioni_per_id" type="long" />
+	</model>
+</model-hints>

@@ -1,0 +1,9 @@
+Bundle-Name: roomservice-api
+Bundle-SymbolicName: com.roomservice.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.roomservice.exception,\
+	com.roomservice.model,\
+	com.roomservice.service,\
+	com.roomservice.service.persistence
+-includeresource: META-INF/service.xml=../roomservice-service/service.xml

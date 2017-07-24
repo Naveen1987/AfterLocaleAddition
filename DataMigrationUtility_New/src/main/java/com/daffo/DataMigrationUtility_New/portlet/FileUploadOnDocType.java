@@ -50,8 +50,391 @@ public boolean uploadInfo(ThemeDisplay themeDisplay, String folderId,String fold
 	if(folder.getName().equalsIgnoreCase(folderName)){
 		logger.info("{ Folder Name Confirmation - Ok }");
 	}
+	String sfolder=folder.getName().toString();
+	if(sfolder.matches("(?i)Procedurre-Doc Az|Documenti di dipartimento"
+			+ "|Sicurezza - Rischio|Note Informative|"
+			+ "Farmacia|SIECIO_CIO|SPP_MC|Direzioni Mediche|SITRA"
+			+ "|HRM|Comitati_Gruppi di Miglioramento|Rapporti e Dati"
+			+ "|Accrediatmento e Controlli|Cartella Clinica"
+			+ "|Report|Normative|Linee Guida|Codifiche|HLA e Malattie"
+			+ "|Accoglienza e Ospitalita |Gestione Beni e Servizi|Abbiategrasso"
+			+ "|Cuggiono|Magenta|Legnano"
+			+ "|Affari Generali e Legali|Comitato Scientifico"
+			+ "|Servizio Risorse Umane"
+			+ "|Modulistica in uso|Piano Formativo Annuale|Regolamento"
+			+ "|DRG Indicazioni codifica|Pubblicazioni"
+			+ "|Monitoraggio Analitico Obbiettivi|Monitoraggio Sintetico Obbiettivi"
+			+ "|Giacenze|Acquisti Appalti|Direzioni Mediche|Regole 2016|Regole 2017")){
+		Map<String, FileItem[]> files= uploadPortletRequest.getMultipartParameterMap();
+		for (Entry<String, FileItem[]> file2 : files.entrySet()) {
+			FileItem item[] =file2.getValue();
+				for (FileItem fileItem : item) {
+					String fileNameW=fileItem.getFileName();
+					try{
+						if (fileNameW.indexOf(".") > 0){
+							fileNameW = fileNameW.substring(0, fileNameW.lastIndexOf("."));
+					     }
+						//Value Extration from file name
+						String val[]=fileNameW.split(Pattern.quote("@"));
+						//getting attribute of Document Type
+						String typeName[]=new ListOfDocType().getDocType(folderName).split(Pattern.quote(","));
+						//Val to type mapping
+						Fields fields=new Fields();
+						if(val.length<typeName.length){
+							for(int i=0;i<val.length;i++){
+								if(!typeName[i].equalsIgnoreCase("Titolo")){
+									Field f=new Field(ddm.getStructureId(), typeName[i], val[i]);
+									fields.put(f);	
+								}
+							}
+						}
+						else{
+							for(int i=0;i<typeName.length;i++){
+								if(!typeName[i].equalsIgnoreCase("Titolo")){
+									Field f=new Field(ddm.getStructureId(), typeName[i], val[i]);
+									fields.put(f);	
+								}	
+							}
+						}
+						if(typeName.length>val.length){
+							int i=val.length;
+							while(i<typeName.length){
+								Field f=new Field(ddm.getStructureId(), typeName[i], "-");
+								fields.put(f);
+								i++;
+							}
+						}
+						logger.info("{ File Name-"+fileItem.getFileName()+" }");
+//				        long userId = themeDisplay.getUserId();
+//						long groupId = themeDisplay.getScopeGroupId();
+						long repositoryId = themeDisplay.getScopeGroupId();				
+						String title = fileItem.getFileName();
+						String description = title +" is added via programatically";
+						String mimeType = fileItem.getContentType();	
+						File file = fileItem.getStoreLocation();
+						System.out.println(file.getName());
+						System.out.println(file.length());
+						String changeLog = "This is By Program";
+							DLFileEntryType sp=null;
+							try{
+							List<DLFileEntryType> dlFileEntryTypes =DLFileEntryTypeLocalServiceUtil.getFileEntryTypes(ddm.getStructureId());
+							if(!dlFileEntryTypes.isEmpty()){
+								sp=dlFileEntryTypes.get(0);
+							}
+							}catch(Exception ex){
+								logger.error("No Document Type {"+ddm.getName()+"} validation failed. Please Recreate your Document type");
+								return false;
+							}
+							
+							InputStream is =fileItem.getInputStream();
+							System.out.println(is.available());
+							ServiceContext serviceContext = new ServiceContext();
+							serviceContext.setAddGuestPermissions(true);
+							serviceContext.setAddGroupPermissions(true);
+							serviceContext.setScopeGroupId(themeDisplay.getScopeGroupId());
+							serviceContext.setUserId(themeDisplay.getDefaultUserId());
+							//Because Default language of DDMStructure id es_US so do when you import document in different Locale
+							serviceContext.setLanguageId("es_US");
+							serviceContext.setAttribute("fileEntryTypeId", sp.getFileEntryTypeId());
+							//Uploading metaData of File
+							for(Field f:fields){
+								String fieldName=""+ddm.getStructureId()+f.getName();
+								serviceContext.setAttribute(fieldName, f.getValue());
+								logger.info("Value Mapped {"+f.getName()+"="+f.getValue()+"}");
+							}			
+							System.out.println(val[1]);
+							DLAppLocalServiceUtil.addFileEntry(themeDisplay.getUserId(),repositoryId, folder.getFolderId(), title, mimeType, 
+									val[1], description, changeLog, is, file.length(), serviceContext);
+						    logger.info("File is Successfully Uploaded-{"+title+"}");
+						    
+					}catch (Exception e) {
+						logger.error(fileNameW+" Not Uploaded and Error Description "+e.getMessage());
+					}
+				}		
+				
+		}	
+	}
 	
-	Map<String, FileItem[]> files= uploadPortletRequest.getMultipartParameterMap();
+
+	else if(sfolder.matches("Modulistica|Regolamenti"))
+	{
+		System.out.println( "Numero,Modulo");
+		Map<String, FileItem[]> files= uploadPortletRequest.getMultipartParameterMap();
+		for (Entry<String, FileItem[]> file2 : files.entrySet()) {
+			FileItem item[] =file2.getValue();
+				for (FileItem fileItem : item) {
+					String fileNameW=fileItem.getFileName();
+					try{
+						if (fileNameW.indexOf(".") > 0){
+							fileNameW = fileNameW.substring(0, fileNameW.lastIndexOf("."));
+					     }
+						//Value Extration from file name
+						String val[]=fileNameW.split(Pattern.quote("@"));
+						//getting attribute of Document Type
+						String typeName[]=new ListOfDocType().getDocType(folderName).split(Pattern.quote(","));
+						//Val to type mapping
+						Fields fields=new Fields();
+						if(val.length<typeName.length){
+							for(int i=0;i<val.length;i++){
+								if(!typeName[i].equalsIgnoreCase("Titolo")){
+									Field f=new Field(ddm.getStructureId(), typeName[i], val[i]);
+									fields.put(f);	
+								}
+							}
+						}
+						else{
+							for(int i=0;i<typeName.length;i++){
+								if(!typeName[i].equalsIgnoreCase("Titolo")){
+									Field f=new Field(ddm.getStructureId(), typeName[i], val[i]);
+									fields.put(f);	
+								}	
+							}
+						}
+						if(typeName.length>val.length){
+							int i=val.length;
+							while(i<typeName.length){
+								Field f=new Field(ddm.getStructureId(), typeName[i], "-");
+								fields.put(f);
+								i++;
+							}
+						}
+						logger.info("{ File Name-"+fileItem.getFileName()+" }");
+//				        long userId = themeDisplay.getUserId();
+//						long groupId = themeDisplay.getScopeGroupId();
+						long repositoryId = themeDisplay.getScopeGroupId();				
+						String title = fileItem.getFileName();
+						String description = title +" is added via programatically";
+						String mimeType = fileItem.getContentType();	
+						File file = fileItem.getStoreLocation();
+						System.out.println(file.getName());
+						System.out.println(file.length());
+						String changeLog = "This is By Program";
+							DLFileEntryType sp=null;
+							try{
+							List<DLFileEntryType> dlFileEntryTypes =DLFileEntryTypeLocalServiceUtil.getFileEntryTypes(ddm.getStructureId());
+							if(!dlFileEntryTypes.isEmpty()){
+								sp=dlFileEntryTypes.get(0);
+							}
+							}catch(Exception ex){
+								logger.error("No Document Type {"+ddm.getName()+"} validation failed. Please Recreate your Document type");
+								return false;
+							}
+							
+							InputStream is =fileItem.getInputStream();
+							System.out.println(is.available());
+							ServiceContext serviceContext = new ServiceContext();
+							serviceContext.setAddGuestPermissions(true);
+							serviceContext.setAddGroupPermissions(true);
+							serviceContext.setScopeGroupId(themeDisplay.getScopeGroupId());
+							serviceContext.setUserId(themeDisplay.getDefaultUserId());
+							//Because Default language of DDMStructure id es_US so do when you import document in different Locale
+							serviceContext.setLanguageId("es_US");
+							serviceContext.setAttribute("fileEntryTypeId", sp.getFileEntryTypeId());
+							//Uploading metaData of File
+							for(Field f:fields){
+								String fieldName=""+ddm.getStructureId()+f.getName();
+								serviceContext.setAttribute(fieldName, f.getValue());
+								logger.info("Value Mapped {"+f.getName()+"="+f.getValue()+"}");
+							}			
+							
+							DLAppLocalServiceUtil.addFileEntry(themeDisplay.getUserId(),repositoryId, folder.getFolderId(), title, mimeType, 
+									fileNameW, description, changeLog, is, file.length(), serviceContext);
+						    logger.info("File is Successfully Uploaded-{"+title+"}");
+						    
+					}catch (Exception e) {
+						logger.error(fileNameW+" Not Uploaded and Error Description "+e.getMessage());
+					}
+				}		
+				
+		}	
+	}
+	else if(sfolder.matches("Customer Satisfaction"))
+	{
+		System.out.println( "Anno,Sede,UnitaOrganizzativa");
+		Map<String, FileItem[]> files= uploadPortletRequest.getMultipartParameterMap();
+		for (Entry<String, FileItem[]> file2 : files.entrySet()) {
+			FileItem item[] =file2.getValue();
+				for (FileItem fileItem : item) {
+					String fileNameW=fileItem.getFileName();
+					try{
+						if (fileNameW.indexOf(".") > 0){
+							fileNameW = fileNameW.substring(0, fileNameW.lastIndexOf("."));
+					     }
+						//Value Extration from file name
+						String val[]=fileNameW.split(Pattern.quote("@"));
+						//getting attribute of Document Type
+						String typeName[]=new ListOfDocType().getDocType(folderName).split(Pattern.quote(","));
+						//Val to type mapping
+						Fields fields=new Fields();
+						if(val.length<typeName.length){
+							for(int i=0;i<val.length;i++){
+								if(!typeName[i].equalsIgnoreCase("Titolo")){
+									Field f=new Field(ddm.getStructureId(), typeName[i], val[i]);
+									fields.put(f);	
+								}
+							}
+						}
+						else{
+							for(int i=0;i<typeName.length;i++){
+								if(!typeName[i].equalsIgnoreCase("Titolo")){
+									Field f=new Field(ddm.getStructureId(), typeName[i], val[i]);
+									fields.put(f);	
+								}	
+							}
+						}
+						if(typeName.length>val.length){
+							int i=val.length;
+							while(i<typeName.length){
+								Field f=new Field(ddm.getStructureId(), typeName[i], "-");
+								fields.put(f);
+								i++;
+							}
+						}
+						logger.info("{ File Name-"+fileItem.getFileName()+" }");
+//				        long userId = themeDisplay.getUserId();
+//						long groupId = themeDisplay.getScopeGroupId();
+						long repositoryId = themeDisplay.getScopeGroupId();				
+						String title = fileItem.getFileName();
+						String description = title +" is added via programatically";
+						String mimeType = fileItem.getContentType();	
+						File file = fileItem.getStoreLocation();
+						System.out.println(file.getName());
+						System.out.println(file.length());
+						String changeLog = "This is By Program";
+							DLFileEntryType sp=null;
+							try{
+							List<DLFileEntryType> dlFileEntryTypes =DLFileEntryTypeLocalServiceUtil.getFileEntryTypes(ddm.getStructureId());
+							if(!dlFileEntryTypes.isEmpty()){
+								sp=dlFileEntryTypes.get(0);
+							}
+							}catch(Exception ex){
+								logger.error("No Document Type {"+ddm.getName()+"} validation failed. Please Recreate your Document type");
+								return false;
+							}
+							
+							InputStream is =fileItem.getInputStream();
+							System.out.println(is.available());
+							ServiceContext serviceContext = new ServiceContext();
+							serviceContext.setAddGuestPermissions(true);
+							serviceContext.setAddGroupPermissions(true);
+							serviceContext.setScopeGroupId(themeDisplay.getScopeGroupId());
+							serviceContext.setUserId(themeDisplay.getDefaultUserId());
+							//Because Default language of DDMStructure id es_US so do when you import document in different Locale
+							serviceContext.setLanguageId("es_US");
+							serviceContext.setAttribute("fileEntryTypeId", sp.getFileEntryTypeId());
+							//Uploading metaData of File
+							for(Field f:fields){
+								String fieldName=""+ddm.getStructureId()+f.getName();
+								serviceContext.setAttribute(fieldName, f.getValue());
+								logger.info("Value Mapped {"+f.getName()+"="+f.getValue()+"}");
+							}			
+							
+							DLAppLocalServiceUtil.addFileEntry(themeDisplay.getUserId(),repositoryId, folder.getFolderId(), title, mimeType, 
+									fileNameW, description, changeLog, is, file.length(), serviceContext);
+						    logger.info("File is Successfully Uploaded-{"+title+"}");
+						    
+					}catch (Exception e) {
+						logger.error(fileNameW+" Not Uploaded and Error Description "+e.getMessage());
+					}
+				}		
+				
+		}	
+	}
+	else if(sfolder.matches("Manuali"))
+	{
+		System.out.println("Applicativo,Spec,Titolo,Lingua,Dimensione");
+		System.out.println( "Numero,Modulo");
+		Map<String, FileItem[]> files= uploadPortletRequest.getMultipartParameterMap();
+		for (Entry<String, FileItem[]> file2 : files.entrySet()) {
+			FileItem item[] =file2.getValue();
+				for (FileItem fileItem : item) {
+					String fileNameW=fileItem.getFileName();
+					try{
+						if (fileNameW.indexOf(".") > 0){
+							fileNameW = fileNameW.substring(0, fileNameW.lastIndexOf("."));
+					     }
+						//Value Extration from file name
+						String val[]=fileNameW.split(Pattern.quote("@"));
+						//getting attribute of Document Type
+						String typeName[]=new ListOfDocType().getDocType(folderName).split(Pattern.quote(","));
+						//Val to type mapping
+						Fields fields=new Fields();
+						if(val.length<typeName.length){
+							for(int i=0;i<val.length;i++){
+								if(!typeName[i].equalsIgnoreCase("Titolo")){
+									Field f=new Field(ddm.getStructureId(), typeName[i], val[i]);
+									fields.put(f);	
+								}
+							}
+						}
+						else{
+							for(int i=0;i<typeName.length;i++){
+								if(!typeName[i].equalsIgnoreCase("Titolo")){
+									Field f=new Field(ddm.getStructureId(), typeName[i], val[i]);
+									fields.put(f);	
+								}	
+							}
+						}
+						if(typeName.length>val.length){
+							int i=val.length;
+							while(i<typeName.length){
+								Field f=new Field(ddm.getStructureId(), typeName[i], "-");
+								fields.put(f);
+								i++;
+							}
+						}
+						logger.info("{ File Name-"+fileItem.getFileName()+" }");
+//				        long userId = themeDisplay.getUserId();
+//						long groupId = themeDisplay.getScopeGroupId();
+						long repositoryId = themeDisplay.getScopeGroupId();				
+						String title = fileItem.getFileName();
+						String description = title +" is added via programatically";
+						String mimeType = fileItem.getContentType();	
+						File file = fileItem.getStoreLocation();
+						System.out.println(file.getName());
+						System.out.println(file.length());
+						String changeLog = "This is By Program";
+							DLFileEntryType sp=null;
+							try{
+							List<DLFileEntryType> dlFileEntryTypes =DLFileEntryTypeLocalServiceUtil.getFileEntryTypes(ddm.getStructureId());
+							if(!dlFileEntryTypes.isEmpty()){
+								sp=dlFileEntryTypes.get(0);
+							}
+							}catch(Exception ex){
+								logger.error("No Document Type {"+ddm.getName()+"} validation failed. Please Recreate your Document type");
+								return false;
+							}
+							
+							InputStream is =fileItem.getInputStream();
+							System.out.println(is.available());
+							ServiceContext serviceContext = new ServiceContext();
+							serviceContext.setAddGuestPermissions(true);
+							serviceContext.setAddGroupPermissions(true);
+							serviceContext.setScopeGroupId(themeDisplay.getScopeGroupId());
+							serviceContext.setUserId(themeDisplay.getDefaultUserId());
+							//Because Default language of DDMStructure id es_US so do when you import document in different Locale
+							serviceContext.setLanguageId("es_US");
+							serviceContext.setAttribute("fileEntryTypeId", sp.getFileEntryTypeId());
+							//Uploading metaData of File
+							for(Field f:fields){
+								String fieldName=""+ddm.getStructureId()+f.getName();
+								serviceContext.setAttribute(fieldName, f.getValue());
+								logger.info("Value Mapped {"+f.getName()+"="+f.getValue()+"}");
+							}			
+							System.out.println(val[2]);
+							DLAppLocalServiceUtil.addFileEntry(themeDisplay.getUserId(),repositoryId, folder.getFolderId(), title, mimeType, 
+									val[2], description, changeLog, is, file.length(), serviceContext);
+						    logger.info("File is Successfully Uploaded-{"+title+"}");
+						    
+					}catch (Exception e) {
+						logger.error(fileNameW+" Not Uploaded and Error Description "+e.getMessage());
+					}
+				}		
+				
+		}	
+	}
+	
+	/*Map<String, FileItem[]> files= uploadPortletRequest.getMultipartParameterMap();
 	for (Entry<String, FileItem[]> file2 : files.entrySet()) {
 		FileItem item[] =file2.getValue();
 			for (FileItem fileItem : item) {
@@ -85,16 +468,6 @@ public boolean uploadInfo(ThemeDisplay themeDisplay, String folderId,String fold
 					if(typeName.length>val.length){
 						int i=val.length;
 						while(i<typeName.length){
-							//When Client Say to put lingua IT
-//							if(typeName[i].equalsIgnoreCase("Lingua"))
-//							{
-//								Field f=new Field(ddm.getStructureId(), typeName[i], "IT");
-//								fields.put(f);
-//							}
-//							else{
-//								Field f=new Field(ddm.getStructureId(), typeName[i], "-empty-");
-//								fields.put(f);
-//							}
 							Field f=new Field(ddm.getStructureId(), typeName[i], "-");
 							fields.put(f);
 							i++;
@@ -129,8 +502,9 @@ public boolean uploadInfo(ThemeDisplay themeDisplay, String folderId,String fold
 						serviceContext.setAddGroupPermissions(true);
 						serviceContext.setScopeGroupId(themeDisplay.getScopeGroupId());
 						serviceContext.setUserId(themeDisplay.getDefaultUserId());
+						//Because Default language of DDMStructure id es_US so do when you import document in different Locale
+						serviceContext.setLanguageId("es_US");
 						serviceContext.setAttribute("fileEntryTypeId", sp.getFileEntryTypeId());
-						
 						//Uploading metaData of File
 						for(Field f:fields){
 							String fieldName=""+ddm.getStructureId()+f.getName();
@@ -141,13 +515,13 @@ public boolean uploadInfo(ThemeDisplay themeDisplay, String folderId,String fold
 						DLAppLocalServiceUtil.addFileEntry(themeDisplay.getUserId(),repositoryId, folder.getFolderId(), title, mimeType, 
 								val[1], description, changeLog, is, file.length(), serviceContext);
 					    logger.info("File is Successfully Uploaded-{"+title+"}");
-					
+					    
 				}catch (Exception e) {
 					logger.error(fileNameW+" Not Uploaded and Error Description "+e.getMessage());
 				}
 			}		
 			
-	}	
+	}	*/
 	return true;
 }
 

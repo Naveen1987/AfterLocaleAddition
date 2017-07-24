@@ -65,6 +65,7 @@ public ListOfDocType()
 	docType.put("Modulistica in uso", "COD,Titolo,Lingua");
 	docType.put("Piano Formativo Annuale", "COD,Titolo,Lingua");
 	docType.put("Regolamento", "COD,Titolo,Lingua");
+	
 	docType.put("DRG Indicazioni codifica", "COD,Titolo,Lingua");
 	docType.put("Pubblicazioni", "COD,Titolo,Lingua");
 	docType.put("Monitoraggio Analitico Obbiettivi", "COD,Titolo,Lingua");

@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.io.FilenameUtils"%>
 <%@page import="com.liferay.portal.kernel.repository.model.Folder"%>
 <%@page import="com.liferay.document.library.kernel.service.DLAppServiceUtil"%>
 <%@page import="java.util.Map"%>
@@ -92,12 +93,12 @@ List<FileLibInfo> records=fsfl.getRecords(folder.getName(), themeDisplay,locale)
 for(FileLibInfo record:records){
 	String cod="",titolo="",lingua="",rev="";
 	for(Map.Entry<String,String> entry:record.getFields().entrySet()){
+		
+		titolo =FilenameUtils.getBaseName(record.getFileName());
 		if(entry.getKey().equalsIgnoreCase("cod")){
 			cod=entry.getValue().toString();
 		}
-		else if(entry.getKey().equalsIgnoreCase("titolo")){
-			titolo=entry.getValue().toString();
-		}
+		
 		else if(entry.getKey().equalsIgnoreCase("REV")){
 			rev=entry.getValue().toString();
 		}
@@ -151,11 +152,9 @@ List<FileLibInfo> records=fsfl.getRecords(folder.getName(), themeDisplay,locale)
 for(FileLibInfo record:records){
 	String cod="",titolo="",lingua="";
 	for(Map.Entry<String,String> entry:record.getFields().entrySet()){
+		titolo =FilenameUtils.getBaseName(record.getFileName());
 		if(entry.getKey().equalsIgnoreCase("cod")){
 			cod=entry.getValue().toString();
-		}
-		else if(entry.getKey().equalsIgnoreCase("titolo")){
-			titolo=entry.getValue().toString();
 		}
 		else if(entry.getKey().equalsIgnoreCase("lingua")){
 			lingua=entry.getValue().toString();
@@ -202,12 +201,11 @@ List<FileLibInfo> records=fsfl.getRecords(folder.getName(), themeDisplay,locale)
 for(FileLibInfo record:records){
 	String cod="",titolo="";
 	for(Map.Entry<String,String> entry:record.getFields().entrySet()){
+		titolo =FilenameUtils.getBaseName(record.getFileName());
 		if(entry.getKey().equalsIgnoreCase("cod")){
 			cod=entry.getValue().toString();
 		}
-		else if(entry.getKey().equalsIgnoreCase("titolo")){
-			titolo=entry.getValue().toString();
-		}
+		
 		
 	}
 %>
@@ -353,14 +351,12 @@ List<FileLibInfo> records=fsfl.getRecords(folder.getName(), themeDisplay,locale)
 for(FileLibInfo record:records){
 	String Applicativo="",Spec="",Titolo="",Lingua="",Dimensione="";
 	for(Map.Entry<String,String> entry:record.getFields().entrySet()){
+		Titolo=FilenameUtils.getBaseName(record.getFileName());
 		if(entry.getKey().equalsIgnoreCase("Applicativo")){
 			Applicativo=entry.getValue().toString();
 		}
 		else if(entry.getKey().equalsIgnoreCase("Spec")){
 			Spec=entry.getValue().toString();
-		}
-		else if(entry.getKey().equalsIgnoreCase("Titolo")){
-			Titolo=entry.getValue().toString();
 		}
 		else if(entry.getKey().equalsIgnoreCase("Lingua")){
 			Lingua=entry.getValue().toString();
@@ -416,11 +412,9 @@ List<FileLibInfo> records=fsfl.getRecords(folder.getName(), themeDisplay,locale)
 for(FileLibInfo record:records){
 	String cod="",titolo="",lingua="";
 	for(Map.Entry<String,String> entry:record.getFields().entrySet()){
+		titolo=FilenameUtils.getBaseName(record.getFileName());
 		if(entry.getKey().equalsIgnoreCase("cod")){
 			cod=entry.getValue().toString();
-		}
-		else if(entry.getKey().equalsIgnoreCase("titolo")){
-			titolo=entry.getValue().toString();
 		}
 		else if(entry.getKey().equalsIgnoreCase("lingua")){
 			lingua=entry.getValue().toString();

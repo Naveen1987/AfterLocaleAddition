@@ -1,8 +1,9 @@
+<%@ include file="/init.jsp" %>
 <div class="container-fluid-1280"> 
 <div class="row" style="text-align:right">
 <div class="col-md-12">
 <br/>
-<a class="medownload btn btn-warning" href="" >Download</a>
+<span class="medownload btn btn-warning"><liferay-ui:message key="download"/></span>
 <br/>
 </div>
 </div>

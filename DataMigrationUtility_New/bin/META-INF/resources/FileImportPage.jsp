@@ -45,7 +45,7 @@ for(Folder folder:folders){
 <tr>
 <td>Select Source Folder</td>
 <td>
-<input type="file" name="<portlet:namespace/>docFile" class="form-control" id="docFile" webkitdirectory mozdirectory msdirectory odirectory directory multiple />
+<input type="file" value="browse" name="<portlet:namespace/>docFile" class="form-control" id="docFile" webkitdirectory mozdirectory msdirectory odirectory directory multiple />
 </td>
 </tr>
 <tr>

@@ -12,6 +12,7 @@
     pageEncoding="UTF-8"%>
  
 
+
 <style>
 .results tr[visible='false'],
 .no-result{
@@ -28,10 +29,29 @@
 }
 
 .box-content{
-  height:900px;
+  height:650px;
   overflow:auto;
 }
-
+.otherhead {
+           width: 15.7%; 
+           float: left;
+       } 
+.otherdata {
+           width: 16%; 
+           float: left;
+       } 
+ .widthData{
+ width:36%;
+ float: left;
+ } 
+ 
+.dataRow tr:first-child td {
+       border-top: none;
+  
+    }
+   .dataRow tr:last-child {
+ 	 border-bottom: 1px solid gray;
+ 	 }
 </style>
 <script>
 $(document).ready(function() {
@@ -61,27 +81,34 @@ $(document).ready(function() {
 			  });
 	});
 </script>
+
 <div class="container-fluid-1280">
 <div class="row">
-<div class="col-md-12 box-content">
+<div class="col-md-12">
 <div class="form-group pull-right">
     <input type="text" class="search form-control" placeholder="<liferay-ui:message key="walf"/>">
 </div>
 <span class="counter pull-right"></span>
-<table class="table table-hover table-bordered results">
+<table class="table">
   <thead>
     <tr class="bg-primary">
-    <th><b>COD</b></th>
-    <th><b>TITOLO</b></th>
-    <th><b>REV</b></th>
-    <th><b>Dimensioni</b></th>
-    <th><b>LINGUA</b></th>
+    <th style="width:.5px"></th>
+    <th class="otherhead"><b>COD</b></th>
+    <th class="widthData"><b>TITOLO</b></th>
+    <th class="otherhead"><b>REV</b></th>
+    <th class="otherhead"><b>Dimensioni</b></th>
+    <th class="otherhead"><b>LINGUA</b></th>
+  	<th style="width:2px"></th>
     </tr>
     <tr class="warning no-result">
-      <td colspan="5"><i class="fa fa-warning"></i> <liferay-ui:message key="noresult"/></td>
+      <td colspan="8"><i class="fa fa-warning"></i> <liferay-ui:message key="noresult"/></td>
     </tr>
   </thead>
     <tbody>
+    <tr>
+    <td colspan="7">
+    <div class="box-content">
+    <table class="table results dataRow">
 <%
 String cod="",titolo="",lingua="",rev="";
 FileServiceFileLib fsfl=new FileServiceFileLib();
@@ -101,24 +128,27 @@ for(FileLibInfo record:records){
 	}
 %>
 <tr>
-<td><aui:a href="<%=record.getDownloadUrl()%>" style="color:black;text-decoration:none;"><%=getValue(cod)%></aui:a></td>
-<td><aui:a href="<%=record.getDownloadUrl()%>" style="color:black;text-decoration:none;"><%=getValue(titolo)%></aui:a></td> 
-<td><aui:a href="<%=record.getDownloadUrl()%>" style="color:black;text-decoration:none;"><%=getValue(rev)%></aui:a></td>
-<td>
+<td  class="otherdata"><aui:a href="<%=record.getDownloadUrl()%>" style="color:black;text-decoration:none;"><%=getValue(cod)%></aui:a></td>
+<td  class="widthData"><aui:a href="<%=record.getDownloadUrl()%>" style="color:black;text-decoration:none;"><%=getValue(titolo)%></aui:a></td> 
+<td  class="otherdata"><aui:a href="<%=record.getDownloadUrl()%>" style="color:black;text-decoration:none;"><%=getValue(rev)%></aui:a></td>
+<td  class="otherdata">
 <aui:a href="<%=record.getDownloadUrl()%>" style="color:black;text-decoration:none;">
 <img src="<%=renderRequest.getContextPath()%>/images/<%=record.getImageName()%>" width="16" height="16" alt="<%=record.getExtension()%> file"/>
 <%=record.getSize()%>
 </aui:a>
 </td>
-<td><aui:a href="<%=record.getDownloadUrl()%>" style="color:black;text-decoration:none;"><%=getValue(lingua)%></aui:a></td>
+<td  class="otherdata"><aui:a href="<%=record.getDownloadUrl()%>" style="color:black;text-decoration:none;"><%=getValue(lingua)%></aui:a></td>
 </tr>
 <%} %>
+</table>
+    </div>
+    </td>
+    </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-
 <%!
 public String getValue(String val){
 	/* System.out.println(val); */
@@ -131,6 +161,7 @@ public String getValue(String val){
 		return val;
 }
 %>
+
 
 <%--
 <table  class="table table-striped">

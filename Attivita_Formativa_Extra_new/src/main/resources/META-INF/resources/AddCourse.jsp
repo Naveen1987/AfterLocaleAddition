@@ -2,6 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/init.jsp" %>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">"
+</head>
 <%--Toggle button /date picker /Time picker/ Spinner(Not have css only js) --%>
 <link href="<%= request.getContextPath()%>/testing/duration-picker.css" rel="stylesheet">
 <script src="<%= request.getContextPath()%>/testing/duration-picker.js"></script>
